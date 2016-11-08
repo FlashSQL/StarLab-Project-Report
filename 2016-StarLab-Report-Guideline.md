@@ -1,3 +1,4 @@
+
 > 2016년도 스타랩 성과물 작성을 위한 성능평가 기준
 
 ## 전체 개요
@@ -24,7 +25,9 @@ Bcache 작업하는 종백이와, FaCE 작업하는 미진이한테만 해당
 트랜잭션 처리량과 동일하게 N (오리지널 성능) / M (내 성능)을 백분률로 표기
 
 ### 4. Write Amplification Factor (WAF)
+
  Write양을 줄이는 실험을 하는 연구자들에게만 해당
+ 
 - 미진: FaCE  
 - 종백: Hadoop 최적화 중 write cache 연구를 진행할때  
 - 영석: 향후 연구 중 write optimization 시  
@@ -37,6 +40,7 @@ Bcache 작업하는 종백이와, FaCE 작업하는 미진이한테만 해당
 - 민지: FTL 실험 수행시 얻어냈던 copy count와 GC count 측정  
 
 **측정 방식 (Application Level WAF)**
+
 1. 데이터베이스 코드 상에서 pwrite()와 같은 write를 유발하는 함수상에서 실제로 disk에 write 요청하는 데이터의 크기를 측정  
 2. 벤치마크 수행시 수집한 blktrace파일에서 실제 데이터 write 양을 계산  
 3. blktrace 결과 / 데이터베이스 write 양의 값을 WAF로 설정  
@@ -44,6 +48,7 @@ Bcache 작업하는 종백이와, FaCE 작업하는 미진이한테만 해당
 5. M/N 의 값을 백분률로 표기 (M 과 N 위치가 트랜잭션 처리량과 반대임)  
 
 **측정 방식 2 (SSD Level WAF)**
+
 1. 벤치마크 수행시 수집한 blktrace 를 통해 실제 데이터 write 양을 계산  
 2. smartctl 커맨드를 통해 SSD 내부 write 양 측정  
 ```bash
@@ -68,5 +73,6 @@ $> sudo smartctl -A /dev/내장치 &> after.smartctl
 3. 쓰기 성능도 동일하게 write bandwidth의 평균값으로 측정  
 
 ### 6. IO 지연시간 (IO Latency)
+
 특정 벤치마크의 경우 결과값으로 latency 정보를 제공해주기도 함. 그런 경우는 해당 latency 정보를 측정.  
 그렇지 않은 경우 [IOPS를 측정](#3.-IOPS)하여 1/IOPS 로 계산
