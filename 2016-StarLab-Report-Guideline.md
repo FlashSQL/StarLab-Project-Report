@@ -69,4 +69,4 @@ $> sudo smartctl -A /dev/내장치 &> after.smartctl
 
 ### 6. IO 지연시간 (IO Latency)
 특정 벤치마크의 경우 결과값으로 latency 정보를 제공해주기도 함. 그런 경우는 해당 latency 정보를 측정. 
-그렇지 않은 경우 [IOPS를 측정](#3- IOPS)하여 1/IOPS 로 계산
+그렇지 않은 경우 [IOPS를 측정](#3-IOPS)하여 1/IOPS 로 계산
